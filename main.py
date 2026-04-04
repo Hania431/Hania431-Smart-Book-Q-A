@@ -1,7 +1,7 @@
 import os
 from crewai import Agent, Task, Crew, Process
 import litellm
-litellm.api_key = os.environ.get("GOOGLE_API_KEY", "AIzaSyCGtCuv6QDNBoBYOacORNQsWzEomJM545Y")
+litellm.api_key = os.environ.get("GOOGLE_API_KEY", "")
 from rag_tool import rag_search_tool
 
 
