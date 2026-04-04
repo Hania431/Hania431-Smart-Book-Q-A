@@ -16,7 +16,7 @@ import os
 from crewai import Agent, Task, Crew, Process
 from rag_tool import rag_search_tool
 
-load_dotenv(override=False)
+
 
 
 # ============================================================
