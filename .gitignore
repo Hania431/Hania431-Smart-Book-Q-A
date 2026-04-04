@@ -1,0 +1,13 @@
+# API keys - NEVER commit this file
+.env
+
+# ChromaDB vector store (generated data)
+chroma_db/
+
+# Python cache files
+__pycache__/
+*.pyc
+
+# Your uploaded documents (optional - remove this line if you want to track them)
+docs/*.pdf
+docs/*.txt
