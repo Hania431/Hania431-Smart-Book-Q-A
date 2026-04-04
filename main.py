@@ -6,12 +6,6 @@ Agents, tasks, crew, and entry point in a single file.
 Three agents work in sequence:
   1. Document Retriever - searches the vector store for relevant chunks
   2. Answer Writer     - writes a clear answer from the chunks
-  3. Quality Checker   - verifies the answer is correct
-
-Before running, make sure you have:
-  1. Added your PDF or TXT files to the 'docs/' folder
-  2. Run 'python rag_setup.py' to build the vector store
-  3. Created a .env file with your GOOGLE_API_KEY
 
 Usage:
     python main.py
@@ -23,13 +17,7 @@ from crewai import Agent, Task, Crew, Process
 from rag_tool import rag_search_tool
 
 load_dotenv()
-try:
-    import streamlit as st
-    os.environ["GOOGLE_API_KEY"] = st.secrets["GOOGLE_API_KEY"]
-    os.environ["GEMINI_API_KEY"] = st.secrets["GOOGLE_API_KEY"]
-except Exception:
-    os.environ["GEMINI_API_KEY"] = os.environ.get("GOOGLE_API_KEY", "")
-
+os.environ["GEMINI_API_KEY"] = os.environ.get("GOOGLE_API_KEY", "")
 
 
 # ============================================================
