@@ -12,12 +12,11 @@ Usage:
 """
 
 import os
-from dotenv import load_dotenv
+
 from crewai import Agent, Task, Crew, Process
 from rag_tool import rag_search_tool
 
-load_dotenv()
-os.environ["GEMINI_API_KEY"] = os.environ.get("GOOGLE_API_KEY", "")
+load_dotenv(override=False)
 
 
 # ============================================================
