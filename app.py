@@ -30,7 +30,7 @@ except Exception:
 # Now import after environment variables are set
 import tempfile
 import shutil
-import streamlit as st
+
 from rag_setup import build_vector_store
 
 
