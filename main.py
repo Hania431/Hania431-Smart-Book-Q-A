@@ -22,9 +22,14 @@ from dotenv import load_dotenv
 from crewai import Agent, Task, Crew, Process
 from rag_tool import rag_search_tool
 
-# Load API key and make it available for CrewAI (which uses LiteLLM)
 load_dotenv()
-os.environ["GEMINI_API_KEY"] = os.environ.get("GOOGLE_API_KEY", "")
+try:
+    import streamlit as st
+    os.environ["GOOGLE_API_KEY"] = st.secrets["GOOGLE_API_KEY"]
+    os.environ["GEMINI_API_KEY"] = st.secrets["GOOGLE_API_KEY"]
+except Exception:
+    os.environ["GEMINI_API_KEY"] = os.environ.get("GOOGLE_API_KEY", "")
+
 
 
 # ============================================================
@@ -187,3 +192,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+
