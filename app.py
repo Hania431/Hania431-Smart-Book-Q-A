@@ -16,7 +16,14 @@ from dotenv import load_dotenv
 
 # CRITICAL: Load environment variables FIRST before any other imports
 load_dotenv()
-os.environ["GEMINI_API_KEY"] = os.environ.get("GOOGLE_API_KEY", "")
+
+# Load from Streamlit secrets if available
+try:
+    import streamlit as st
+    os.environ["GOOGLE_API_KEY"] = st.secrets["GOOGLE_API_KEY"]
+    os.environ["GEMINI_API_KEY"] = st.secrets["GOOGLE_API_KEY"]
+except Exception:
+    os.environ["GEMINI_API_KEY"] = os.environ.get("GOOGLE_API_KEY", "")
 
 # Now import after environment variables are set
 import tempfile
@@ -220,3 +227,4 @@ st.markdown("""
     <small>Powered by CrewAI + LangChain + Google Gemini</small>
 </div>
 """, unsafe_allow_html=True)
+
