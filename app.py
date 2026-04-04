@@ -20,9 +20,9 @@ load_dotenv()
 # Load from Streamlit secrets if available
 try:
     import streamlit as st
-   os.environ["GOOGLE_API_KEY"] = st.secrets["GOOGLE_API_KEY"]
-   os.environ["GEMINI_API_KEY"] = st.secrets["GOOGLE_API_KEY"]
-   os.environ["GOOGLE_GEMINI_API_KEY"] = st.secrets["GOOGLE_API_KEY"]
+    os.environ["GOOGLE_API_KEY"] = st.secrets["GOOGLE_API_KEY"]
+    os.environ["GEMINI_API_KEY"] = st.secrets["GOOGLE_API_KEY"]
+    os.environ["GOOGLE_GEMINI_API_KEY"] = st.secrets["GOOGLE_API_KEY"]
 except Exception:
     os.environ["GEMINI_API_KEY"] = os.environ.get("GOOGLE_API_KEY", "")
 
