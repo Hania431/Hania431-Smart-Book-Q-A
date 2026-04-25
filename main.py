@@ -1,7 +1,14 @@
 import os
 from crewai import Agent, Task, Crew, Process
 import litellm
+from dotenv import load_dotenv
+
+# Load environment variables
+load_dotenv()
+
+# Set the API key for litellm
 litellm.api_key = os.environ.get("GOOGLE_API_KEY", "")
+
 from rag_tool import rag_search_tool
 
 
@@ -12,7 +19,7 @@ def run_crew(question: str):
         goal="Search the vector store and return the most relevant chunks for the question",
         backstory="You are an expert librarian. Always use your RAG Search Tool to find information.",
         tools=[rag_search_tool],
-        llm="gemini/gemini-2.0-flash",
+        llm="google/gemini-2.0-flash",
         verbose=True
     )
 
@@ -20,7 +27,7 @@ def run_crew(question: str):
         role="Answer Writer",
         goal="Write a clear accurate answer using only retrieved chunks",
         backstory="You are a friendly teacher who only uses source chunks to answer.",
-        llm="gemini/gemini-2.0-flash",
+        llm="google/gemini-2.0-flash",
         verbose=True
     )
 
@@ -28,7 +35,7 @@ def run_crew(question: str):
         role="Quality Checker",
         goal="Verify the answer is correct and complete",
         backstory="You are a careful fact-checker who checks answers against source text.",
-        llm="gemini/gemini-2.0-flash",
+        llm="google/gemini-2.0-flash",
         verbose=True
     )
 
