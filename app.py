@@ -27,6 +27,10 @@ try:
 except Exception:
     os.environ["GEMINI_API_KEY"] = os.environ.get("GOOGLE_API_KEY", "")
 
+# Also set it for litellm directly
+import litellm
+litellm.api_key = os.environ.get("GOOGLE_API_KEY", "")
+
 # Now import after environment variables are set
 import tempfile
 import shutil
