@@ -1,4 +1,4 @@
-pydantic==2.7.4
+pydantic
 crewai
 crewai-tools
 langchain
